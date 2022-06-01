@@ -1,4 +1,9 @@
-// Solución 1
+/**
+ * Multiplicación
+ * @param {Number} a 
+ * @param {Number} b 
+ * @returns a * b
+ */
 
 function multiplicacion(a, b) {
   let acc = 0;
@@ -9,5 +14,3 @@ function multiplicacion(a, b) {
   if (a < 0 || b < 0) return -acc;
   return acc;
 }
-
-console.log(multiplicacion(5,5))
