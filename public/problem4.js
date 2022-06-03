@@ -1,10 +1,13 @@
-// Dado un arreglo de números cualesquiera sacar la siguiente información:
-
-// Cantidad de elementos del arreglo.
-// Porcentaje de números pares e impares.
-// Porcentaje de números mayores a 1000.
-// Cuál es el mayor y menor valor.
-// Asuma los siguientes indicadores: Tome en cuenta que el mayor número representa el 100%, indique cual es el porcentaje del número mínimo y el porcentaje del promedio de todos los números.
+// Helpers
+function debounce(func, delay) {
+  let timeout;
+  return (...args) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}
 
 const arrayData = {
   arreglo: undefined,
@@ -35,23 +38,23 @@ const arrayData = {
         gt1000++;
       }
     }
-    this.data.odd_pct = odd * 100 / this.data.size;
-    this.data.even_pct = even * 100 / this.data.size;
-    this.data.gt1000_pct = gt1000 * 100 / this.data.size;
+    this.data.odd_pct = Number((odd * 100 / this.data.size).toFixed(2));
+    this.data.even_pct = Number((even * 100 / this.data.size).toFixed(2));
+    this.data.gt1000_pct = Number((gt1000 * 100 / this.data.size).toFixed(2));
   },
 
   lowestAndHighest() {
     this.data.lowest = Math.min(...this.arreglo);
     this.data.highest = Math.max(...this.arreglo);
-    this.data.lowest_pct = this.data.lowest * 100 / this.data.highest;
+    this.data.lowest_pct = Number((this.data.lowest * 100 / this.data.highest).toFixed(2));
   },
 
   averagePercentage() {
-    this.data.avg_pct = (this.arreglo.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / this.data.size) * 100 / this.data.highest;
+    this.data.avg_pct = Number(((this.arreglo.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / this.data.size) * 100 / this.data.highest).toFixed(2));
   },
 
-  get(arr) {
-    this.arreglo = arr.map(value => Number(value));
+  get(numbers) {
+    this.arreglo = numbers.split(' ').map(value => Number(value));
     this.setSize();
     this.percentageOddEvenAndGT1000();
     this.lowestAndHighest();
@@ -59,3 +62,26 @@ const arrayData = {
     return this.data;
   }
 }
+
+function createList() {
+  const input = document.getElementById('numbers');
+  const data = arrayData.get(input.value);
+  const list = document.getElementById('list');
+  if (input.value) {
+    list.replaceChildren();
+    for (let key in data) {
+      let elem = document.createElement('li');
+      list.appendChild(elem);
+      elem.innerHTML = `${key}: ${data[key]}`;
+    } 
+  } else {
+    list.replaceChildren();
+  }
+  
+}
+
+function loadPageListeners() {
+  const input = document.getElementById('numbers');
+  input.addEventListener('input', debounce(createList, 1000));
+}
+document.addEventListener('DOMContentLoaded', loadPageListeners);

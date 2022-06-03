@@ -14,16 +14,12 @@ function debounce(func, delay) {
 function getPokeCountByType() {
   const input = document.getElementById('p1');
   const result = document.getElementById('r1');
-  if (input.value) {
-    fetch(`https://pokeapi.co/api/v2/type/${input.value}`)
-    .then(res => res.json())
-    .then(cantidad => {
-      result.innerHTML = cantidad.pokemon.length;
-    })
-    .catch(err => console.error(err));
-  } else {
-    result.innerHTML = 0;
-  }
+  fetch(`https://pokeapi.co/api/v2/type/${input.value}`)
+  .then(res => res.json())
+  .then(cantidad => {
+    result.innerHTML = cantidad.pokemon.length;
+  })
+  .catch(err => console.error(err));
 }
 
 
@@ -57,7 +53,6 @@ async function getPokeByTwoTypes() {
     })
     .catch(err => console.error(err));    
   }
-  
 }
 
 
@@ -65,16 +60,12 @@ async function getPokeByTwoTypes() {
 async function getPokeId() {
   const input = document.getElementById('p3');
   const result = document.getElementById('r3');
-  if (input.value) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${input.value}`)
+  fetch(`https://pokeapi.co/api/v2/pokemon/${input.value}`)
     .then(res => res.json())
     .then(poke => {
       result.innerHTML = poke.id;
     })
     .catch(err => console.error(err));
-  } else {
-    result.innerHTML = 0;
-  }
 }
 
 
@@ -82,9 +73,8 @@ async function getPokeId() {
 async function getPokeStats() {
   const input = document.getElementById('p4');
   const result = document.getElementById('r4');
-  if (input.value) {
-    let acc = {};
-    fetch(`https://pokeapi.co/api/v2/pokemon/${input.value}`)
+  let acc = {};
+  fetch(`https://pokeapi.co/api/v2/pokemon/${input.value}`)
     .then(res => res.json())
     .then(poke => {
       for (let i = 0; i < poke.stats.length; i++) {    
@@ -94,12 +84,9 @@ async function getPokeStats() {
         });
       }
       result.innerHTML = JSON.stringify(acc);
-      
+
     })
     .catch(err => console.error(err));
-  } else {
-    result.innerHTML = 'none';
-  }
 }
 
 
@@ -108,26 +95,20 @@ async function orderBy() {
   const input = document.getElementById('p5-ids');
   const ordenador = document.getElementById('p5-order');
   const result = document.getElementById('r5');
-  if (input.value) {
-    let strInput = String(input.value);
-    console.log(strInput)
-    let arr = strInput.split(' ');
-    const acc = [];
-    for (let i = 0; i < arr.length; i++) {
-      await fetch(`https://pokeapi.co/api/v2/pokemon/${arr[i]}`)
-        .then(res => res.json())
-        .then(poke => acc.push({ name: poke.name, weight: poke.weight, height: poke.height }))
-        .catch(err => console.error(err));        
-    }
-
-    if (String(ordenador.value) === 'name') {
-      result.innerHTML = JSON.stringify(acc.sort((a, b) => String(a[ordenador.value]).localeCompare(String(b[ordenador.value]))));
-    } else {
-      result.innerHTML = JSON.stringify(acc.sort((a, b) => a[ordenador.value] - b[ordenador.value]));
-    }
+  let strInput = String(input.value);
+  let arr = strInput.split(' ');
+  const acc = [];
+  for (let i = 0; i < arr.length; i++) {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${arr[i]}`)
+      .then(res => res.json())
+      .then(poke => acc.push({ name: poke.name, weight: poke.weight, height: poke.height }))
+      .catch(err => console.error(err));        
+  }
+  if (String(ordenador.value) === 'name') {
+    result.innerHTML = JSON.stringify(acc.sort((a, b) => String(a[ordenador.value]).localeCompare(String(b[ordenador.value]))));
   } else {
-    result.innerHTML = 'none';
-  }  
+    result.innerHTML = JSON.stringify(acc.sort((a, b) => a[ordenador.value] - b[ordenador.value]));
+  }
 }
 
 

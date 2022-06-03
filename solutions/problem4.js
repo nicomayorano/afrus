@@ -35,19 +35,19 @@ const arrayData = {
         gt1000++;
       }
     }
-    this.data.odd_pct = odd * 100 / this.data.size;
-    this.data.even_pct = even * 100 / this.data.size;
-    this.data.gt1000_pct = gt1000 * 100 / this.data.size;
+    this.data.odd_pct = Number((odd * 100 / this.data.size).toFixed(2));
+    this.data.even_pct = Number((even * 100 / this.data.size).toFixed(2));
+    this.data.gt1000_pct = Number((gt1000 * 100 / this.data.size).toFixed(2));
   },
 
   lowestAndHighest() {
     this.data.lowest = Math.min(...this.arreglo);
     this.data.highest = Math.max(...this.arreglo);
-    this.data.lowest_pct = this.data.lowest * 100 / this.data.highest;
+    this.data.lowest_pct = Number((this.data.lowest * 100 / this.data.highest).toFixed(2));
   },
 
   averagePercentage() {
-    this.data.avg_pct = (this.arreglo.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / this.data.size) * 100 / this.data.highest;
+    this.data.avg_pct = Number(((this.arreglo.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / this.data.size) * 100 / this.data.highest).toFixed(2));
   },
 
   get(arr) {
@@ -59,3 +59,6 @@ const arrayData = {
     return this.data;
   }
 }
+
+// console.log(arrayData.get([123, 1234, 4232, 400, 441, 500, 9991]))
+// node solutions/problem4.js
