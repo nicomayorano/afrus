@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="/problem2.js"></script>
+  <title>Afrus</title>
+</head>
+<body>
+  <main>
+    <h1>Problema 2</h1>
+    <h2>Pokémon</h3>
+    <br>
+    <br>
+    <h4>Suma total de pokemones por tipo, debe recibir el tipo en string</h4>
+    <label for="p1">Tipo: </label>
+    <input type="text" id="p1" name="p1">
+    <span>Cantidad:  </span>
+    <span id="r1" style="font-weight: 700;"></span>
+    <br>
+    <br>
+    <h4>Dado 2 tipos de pokémon retornar todos los pokemones que cumplen con esos 2 tipos</h4>
+    <label for="p2-1">Tipo 1: </label>
+    <input type="text" id="p2-1" name="p2-1">
+    <label for="p2-2">Tipo 2: </label>
+    <input type="text" id="p2-2" name="p2-2">
+    <span>Pokemones:  </span>
+    <span><code id="r2"></code></span>
+    <br>
+    <br>
+    <h4>Dado el nombre de un pokémon retornar el número del mismo</h4>
+    <label for="p3">Nombre: </label>
+    <input type="text" id="p3" name="p3">
+    <span>Número:  </span>
+    <span id="r3" style="font-weight: 700;"></span>
+    <br>
+    <br>
+    <h4>Dado el número de un pokémon retornar un objeto con sus 6 stats base</h4>
+    <label for="p4">Número: </label>
+    <input type="text" id="p4" name="p4">
+    <span>Stats:  </span>
+    <span><code id="r4"></code></span>
+    <br>
+    <br>
+    <h4>Realizar una función que reciba un arreglo de números (Ids de pokémon) y un ordenador y retorne los pokémon en un arreglo con su nombre, tipo y peso ordenados según se indique por la función por uno de estos 3 indicadores.</h4>
+    <label for="p5-ids">IDs de Pokémon separadas por espacio: </label>
+    <input type="text" id="p5-ids" name="p5-ids">
+    <select name="p5-order" id="p5-order">
+      <option value="name">name</option>
+      <option value="height">height</option>
+      <option value="weight">weight</option>
+    </select>
+    <span>Pokemones: </span>
+    <span><code id="r5"></code></span>
+    <br>
+    <h4>Recibir un número y un tipo (de pokémon) y retornar un true o false si el pokémon de ese número posee este tipo</h4>
+    <label for="p6-id">ID: </label>
+    <input type="number" id="p6-id"" name="p6-id">
+    <label for="p6-type">Tipo: </label>
+    <input type="text" id="p6-type" name="p6-type">
+    <span>Es de ese tipo?:  </span>
+    <span><code id="r6"></code></span>
+  </main>
+  <footer>
+    <div style="padding-top: 100px;">
+    <a href="/" ">Volver</a>
+    </div>
+  </footer>
+</body>
+</html>
