@@ -19,16 +19,16 @@
     <form action="/3" method="post">
       <label for="password">Password segura: </label>
     <input type="text" name="password" id="password"> <!-- No type="password" para mejor visualización -->
-    <ul id="validation-list">
-      <li class="list-elem">Debe tener al menos 16 caracteres.</li>
-      <li class="list-elem">Debe tener letras minúsculas y mayúsculas.</li>
-      <li class="list-elem">No puede tener 2 letras iguales consecutivas.</li>
-      <li class="list-elem">Debe contener al menos 4 números.</li>
-      <li class="list-elem">No puede tener 2 números iguales consecutivos.</li>
-      <li class="list-elem">Debe tener al menos 2 caracteres especiales (!@#$%^&*-_+=?).</li>
-      <li class="list-elem">Un caracter especial no puede repetirse en ninguna posición ni puede haber dos de éstos adyacentes.</li>
-      <li class="list-elem">No se puede usar el número 0.</li>
-      <li class="list-elem">No se puede colocar espacios.</li>
+    <ul id="validation-list" style="font-weight: 700;">
+      <li class="list-elem" id="length">Debe tener al menos 16 caracteres.</li>
+      <li class="list-elem" id="capitalization">Debe tener letras minúsculas y mayúsculas.</li>
+      <li class="list-elem" id="adjacent-letters">No puede tener 2 letras iguales consecutivas.</li>
+      <li class="list-elem" id="min-numbers">Debe contener al menos 4 números.</li>
+      <li class="list-elem" id="adjacent-numbers">No puede tener 2 números iguales consecutivos.</li>
+      <li class="list-elem" id="min-symbols">Debe tener al menos 2 caracteres especiales (!@#$%^&*-_+=?).</li>
+      <li class="list-elem" id="symbols-restraints">Un caracter especial no puede repetirse en ninguna posición ni puede haber dos de éstos adyacentes.</li>
+      <li class="list-elem" id="zero-restraint">No se puede usar el número 0.</li>
+      <li class="list-elem" id="spaces-restraint">No se puede colocar espacios.</li>
     </ul>
     <button type="submit">Enviar</button>
     </form>
