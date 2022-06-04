@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="/problem5.js"></script>
+  <title>Afrus</title>
+</head>
+<body>
+  <main>
+    <h1>Problema 5</h1>
+    <h2>Validación</h2>
+    <% if (locals.valida && valida) { %>
+    <h2 style="color: green; font-weight: 700;">Password validada en backend (problema 3)</h2>
+    <% } if (locals.invalida && invalida) { %>
+    <h2 style="color: red; font-weight: 700;">Password NO validada en backend (problema 3)</h2>
+    <% } %>
+    <form action="/3" method="post">
+      <label for="password">Password segura: </label>
+    <input type="text" name="password" id="password"> <!-- No type="password" para mejor visualización -->
+    <ul id="validation-list">
+      <li class="list-elem">Debe tener al menos 16 caracteres.</li>
+      <li class="list-elem">Debe tener letras minúsculas y mayúsculas.</li>
+      <li class="list-elem">No puede tener 2 letras iguales consecutivas.</li>
+      <li class="list-elem">Debe contener al menos 4 números.</li>
+      <li class="list-elem">No puede tener 2 números iguales consecutivos.</li>
+      <li class="list-elem">Debe tener al menos 2 caracteres especiales (!@#$%^&*-_+=?).</li>
+      <li class="list-elem">Un caracter especial no puede repetirse en ninguna posición ni puede haber dos de éstos adyacentes.</li>
+      <li class="list-elem">No se puede usar el número 0.</li>
+      <li class="list-elem">No se puede colocar espacios.</li>
+    </ul>
+    <button type="submit">Enviar</button>
+    </form>
+  </main>
+  <footer>
+    <div style="padding-top: 100px;">
+     <a href="/">Volver</a>
+    </div>
+  </footer>
+</body>
+</html>

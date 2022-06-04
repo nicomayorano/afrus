@@ -1,3 +1,5 @@
+import { validationResult } from "express-validator";
+
 export default {
   index: (req, res) => {
     res.render('index');
@@ -12,10 +14,19 @@ export default {
   },
 
   problem3: (req, res) => {
-    res.render('problem3');
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      res.render('problem5', { valida: true });
+    } else {
+      res.render('problem5', { invalida: true });
+    }    
   },
 
   problem4: (req, res) => {
     res.render('problem4');
+  },
+
+  problem5: (req, res) => {
+    res.render('problem5');
   },
 }
