@@ -9,18 +9,25 @@ export default [
 
       for (let i = 0; i < pwd.length; i++) {
         let charcode = pwd.charCodeAt(i);
+
         if (charcode >= 97 && charcode <= 122) lowercase++;
+
         if (charcode >= 65 && charcode <= 90) uppercase++;
+
         if (i !== 0 && (charcode >= 97 && charcode <= 122 || charcode >= 65 && charcode <= 90) && pwd[i] === pwd[i-1]) matchingAdjacentLetters = true;
+
         if (charcode >= 48 && charcode <= 57) numbers++;
+
         if (i !== 0 && charcode >= 48 && charcode <= 57 && pwd[i] === pwd[i-1]) matchingAdjacentNumbers = true;
-        if (charcode >= 0 )
+
         if (allowedSymbolsCharCodes.includes(charcode)) {
           symbolsCount++;
           if (i !== pwd.length - 1 && pwd.includes(String.fromCharCode(charcode), i + 1)) symbolNotUnique = true;
           if (i !== 0 && allowedSymbolsCharCodes.includes(pwd.charCodeAt(i - 1))) adjacentSymbols = true;
         }
+
         if (pwd[i] === '0') zero++;
+
         if (pwd[i] === ' ') spaces++;
       }
 
@@ -57,18 +64,25 @@ function strongPasswordValidator(pwd) {
 
   for (let i = 0; i < pwd.length; i++) {
     let charcode = pwd.charCodeAt(i);
+
     if (charcode >= 97 && charcode <= 122) lowercase++;
+
     if (charcode >= 65 && charcode <= 90) uppercase++;
+
     if (i !== 0 && (charcode >= 97 && charcode <= 122 || charcode >= 65 && charcode <= 90) && pwd[i] === pwd[i-1]) matchingAdjacentLetters = true;
+
     if (charcode >= 48 && charcode <= 57) numbers++;
+
     if (i !== 0 && charcode >= 48 && charcode <= 57 && pwd[i] === pwd[i-1]) matchingAdjacentNumbers = true;
-    if (charcode >= 0 )
+
     if (allowedSymbolsCharCodes.includes(charcode)) {
       symbolsCount++;
       if (i !== pwd.length - 1 && pwd.includes(String.fromCharCode(charcode), i + 1)) symbolNotUnique = true;
       if (i !== 0 && allowedSymbolsCharCodes.includes(pwd.charCodeAt(i - 1))) adjacentSymbols = true;
     }
+
     if (pwd[i] === '0') zero++;
+
     if (pwd[i] === ' ') spaces++;
   }
   
